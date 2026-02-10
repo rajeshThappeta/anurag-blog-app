@@ -23,11 +23,11 @@ export const register = async (userObj) => {
 };
 
 //authenticate function
-export const authenticate = async ({ email, password, role }) => {
+export const authenticate = async ({ email, password }) => {
     //check user with email & role
-  const user = await UserTypeModel.findOne({ email, role });
+  const user = await UserTypeModel.findOne({ email });
   if (!user) {
-    const err = new Error("Invalid email or role");
+    const err = new Error("Invalid email");
     err.status = 401;
     throw err;
   }

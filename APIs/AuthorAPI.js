@@ -16,21 +16,7 @@ authorRoute.post("/users", async (req, res) => {
   //send res
   res.status(201).json({ message: "authroe created", payload: newUserObj });
 });
-//authenticate author(public)
-authorRoute.post("/authenticate", async (req, res) => {
-  //get user cred object
-  let userCred = req.body;
-  //call authenticate service
-  let { token, user } = await authenticate(userCred);
-  //save tokan as httpOnly cookie
-  res.cookie("token", token, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: false,
-  });
-  //send res
-  res.status(200).json({ message: "login success", payload: user });
-});
+
 
 //Create article(protected route)
 authorRoute.post("/articles",verifyToken ,checkAuthor, async (req, res) => {
