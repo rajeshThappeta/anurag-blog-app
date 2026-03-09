@@ -12,7 +12,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: [true, "Email is required"],
-      unique:[true,"Email already existed"]
+      unique: [true, "Email already existed"],
     },
     password: {
       type: String,
@@ -39,4 +39,4 @@ const userSchema = new Schema(
 );
 
 //create model
-export const UserTypeModel=model("user",userSchema)
+export const UserTypeModel = model("user", userSchema);

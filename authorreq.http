@@ -1,25 +1,3 @@
-### User Register
-POST http://localhost:4000/user-api/users
-Content-Type: application/json
-
-{
-  "firstName": "Anurag",
-  "lastName": "Sharma",
-  "email": "anurag.user@example.com",
-  "password": "User@12345",
-  "profileImageUrl": "https://example.com/avatars/user.png"
-}
-
-### User Login
-POST http://localhost:4000/common-api/login
-Content-Type: application/json
-
-{
-  "email": "anurag.user@example.com",
-  "password": "User@12345"
- 
-}
-
 ### Author Register
 POST http://localhost:4000/author-api/users
 Content-Type: application/json
@@ -70,7 +48,7 @@ Content-Type: application/json
 
 
 
-###Read articles of a author
+###Read articles of an author
 GET http://localhost:4000/author-api/articles/698965b85a08a6721a29ef61
 
 
@@ -89,14 +67,27 @@ Content-Type: application/json
 
 
 
+### Delete article
+PATCH http://localhost:4000/author-api/articles/6989750220ce5bf826ec4f7e/status
+Content-Type: application/json
+
+{ "isArticleActive": true }
+
+
 ### Logout
 GET http://localhost:4000/common-api/logout
 
 
 
 
-### Test res
-GET http://localhost:4000/test
 
-###
-GET http://localhost:4000/hello
+### Change password
+PUT http://localhost:4000/common-api/change-password
+Content-Type: application/json
+
+{
+  "email":"test@example.com",
+  "currentPassword":"test",
+  "newPassword":"test1"
+  
+}

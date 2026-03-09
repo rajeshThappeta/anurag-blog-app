@@ -6,16 +6,18 @@ import cookieParser from "cookie-parser";
 import { adminRoute } from "./APIs/AdminAPI.js";
 import { authorRoute } from "./APIs/AuthorAPI.js";
 import { commonRouter } from "./APIs/CommonAPI.js";
+import cors from "cors";
 
 config(); //process.env
 
 //Create express application
 const app = exp();
+//use cors middleware
+app.use(cors({ origin: ["http://localhost:5173"] }));
 //add body parser middleware
 app.use(exp.json());
 //add cookie parser middleware
 app.use(cookieParser());
-
 
 //connect APIs
 app.use("/user-api", userRoute);
@@ -40,8 +42,8 @@ connectDB();
 
 //dealing with invalid path
 app.use((req, res, next) => {
-  console.log(req.url)
-  res.json({ message: `${req.url} is invalid path`});
+  console.log(req.url);
+  res.json({ message: `${req.url} is invalid path` });
 });
 
 //error handling middleware
@@ -93,5 +95,3 @@ app.use((err, req, res, next) => {
   console.log("err :", err);
   res.status(finalStatus).json(response);
 });
-
-
